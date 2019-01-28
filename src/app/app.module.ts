@@ -15,7 +15,8 @@ const AppRoutes: Routes = [
   {path: '', component: PHomeComponent},
   {path: 'dashboard', component: PDashboardComponent},
   {path: 'dashboard/:id', component: PDashboardComponent},
-  {path: '**', component: PNotfoundComponent}
+  {path: '404', component: PNotfoundComponent},
+  {path: '**', redirectTo: '/404'}
 ];
 
 @NgModule({

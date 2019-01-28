@@ -3,6 +3,8 @@
 
 Двухстраничное SPA с выбором пунктов
 
+Ссылка на демо - https://grigorievk.github.io/menu-test/
+
 # MenuTest
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.2.3.
