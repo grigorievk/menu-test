@@ -1,4 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { CountService } from '../../count.service';
+import construct = Reflect.construct;
 
 @Component({
   selector: 'app-b-list-items',
@@ -7,12 +9,19 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class BListItemsComponent implements OnInit {
   @Input() listItems;
+  @Input() categoryId;
 
-  constructor() {
+  constructor(private countService: CountService) {}
+
+  toggleItem(item) {
+    item.checked = !item.checked;
+    if (item.checked) {
+      this.countService.addItem(item.price);
+    } else {
+      this.countService.removeItem(item.price);
+    }
   }
 
-  ngOnInit() {
-
-  }
+  ngOnInit() {}
 
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { CountService } from '../../count.service';
 
 @Component({
   selector: 'app-b-header',
@@ -7,10 +8,15 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class BHeaderComponent implements OnInit {
   @Input() menuTitle;
+  totalCount: number = 0;
+  totalPrice: number = 0;
 
-  constructor() { }
+  constructor(private countService: CountService) {}
 
   ngOnInit() {
+    this.countService.change.subscribe(emitData => {
+      this.totalCount = emitData.count;
+      this.totalPrice = emitData.price;
+    });
   }
-
 }
