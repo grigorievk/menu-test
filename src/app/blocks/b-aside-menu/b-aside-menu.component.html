@@ -1,0 +1,6 @@
+<ul>
+  <li *ngFor="let item of menuItems">
+    <a [routerLink]="['/dashboard', item.id]">{{ item.name }}</a>
+    <!--<a (click)="selectCategory(item.id)">{{ item.name }}</a>-->
+  </li>
+</ul>

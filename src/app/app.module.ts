@@ -7,10 +7,13 @@ import { AppComponent } from './app.component';
 import { PHomeComponent } from './pages/p-home/p-home.component';
 import { PDashboardComponent } from './pages/p-dashboard/p-dashboard.component';
 import { PNotfoundComponent } from './pages/p-notfound/p-notfound.component';
+import { BAsideMenuComponent } from './blocks/b-aside-menu/b-aside-menu.component';
+import { BListItemsComponent } from './blocks/b-list-items/b-list-items.component';
 
 const AppRoutes: Routes = [
   {path: '', component: PHomeComponent},
   {path: 'dashboard', component: PDashboardComponent},
+  {path: 'dashboard/:id', component: PDashboardComponent},
   {path: '**', component: PNotfoundComponent}
 ];
 
@@ -19,7 +22,9 @@ const AppRoutes: Routes = [
     AppComponent,
     PHomeComponent,
     PDashboardComponent,
-    PNotfoundComponent
+    PNotfoundComponent,
+    BAsideMenuComponent,
+    BListItemsComponent
   ],
   imports: [
     BrowserModule,
