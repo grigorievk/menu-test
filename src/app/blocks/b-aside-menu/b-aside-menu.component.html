@@ -1,5 +1,6 @@
 <ul>
   <li *ngFor="let item of menuItems">
+    <span *ngIf="item.id === categoryId">&gt;</span>
     <a [routerLink]="['/dashboard', item.id]">{{ item.name }}</a>
   </li>
 </ul>

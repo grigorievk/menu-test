@@ -7,6 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class BAsideMenuComponent implements OnInit {
   @Input() menuItems;
+  @Input() categoryId;
 
   constructor() { }
 
