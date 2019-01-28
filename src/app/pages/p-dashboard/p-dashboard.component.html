@@ -1,16 +1,10 @@
-<header>
-  <h2 title="Current menu">Menu 1</h2>
-  <div class="b-info-text">
-    <span>Total selected: 2</span>
-    <span>Total price: 70$</span>
-  </div>
-</header>
+<app-b-header [menuTitle]="menuTitle"></app-b-header>
 <section>
   <aside>
     <app-b-aside-menu [menuItems]="menuArray"></app-b-aside-menu>
   </aside>
   <div class="content">
-    <app-b-list-items [listItems]="menuArray"></app-b-list-items>
+    <app-b-list-items [listItems]="listItems"></app-b-list-items>
   </div>
 </section>
 <footer>

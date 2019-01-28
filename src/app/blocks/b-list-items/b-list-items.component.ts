@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: 'app-b-list-items',
@@ -9,20 +8,11 @@ import { ActivatedRoute } from "@angular/router";
 export class BListItemsComponent implements OnInit {
   @Input() listItems;
 
-  items:object;
-
-  constructor(private route: ActivatedRoute) {
+  constructor() {
   }
 
   ngOnInit() {
-    this.route.paramMap.subscribe(params => {
-      const currentId = parseInt(params.get('id')) || 1;
-      const currentCategory = this.listItems.filter(obj => {
-        return obj.id === currentId;
-      });
 
-      this.items = currentCategory[0].items;
-    });
   }
 
 }

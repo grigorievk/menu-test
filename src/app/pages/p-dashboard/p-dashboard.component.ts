@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: 'app-p-dashboard',
@@ -6,8 +7,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./p-dashboard.component.sass']
 })
 export class PDashboardComponent implements OnInit {
-
-  currentCategory: number = 1;
 
   menuArray = [
     {
@@ -38,9 +37,21 @@ export class PDashboardComponent implements OnInit {
     }
   ];
 
-  constructor() {}
+  menuTitle:string;
+  listItems:object;
+
+  constructor(private route: ActivatedRoute) {}
 
   ngOnInit() {
+    this.route.paramMap.subscribe(params => {
+      const currentId = parseInt(params.get('id')) || 1;
+      const currentCategory = this.menuArray.filter(obj => {
+        return obj.id === currentId;
+      });
+
+      this.menuTitle = currentCategory[0].name;
+      this.listItems = currentCategory[0].items;
+    });
   }
 
 }
