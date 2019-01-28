@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PDashboardComponent implements OnInit {
 
-  currentCategory : object = {};
+  currentCategory: number = 1;
 
   menuArray = [
     {
@@ -38,7 +38,7 @@ export class PDashboardComponent implements OnInit {
     }
   ];
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
   }
