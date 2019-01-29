@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import * as itemAction from '../actions';
+import * as itemAction from '../actions/items';
 import { Item } from '../../models/item';
 
 export interface State {
