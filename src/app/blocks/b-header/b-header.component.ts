@@ -14,9 +14,15 @@ export class BHeaderComponent implements OnInit {
   constructor(private countService: CountService) {}
 
   ngOnInit() {
-    this.countService.change.subscribe(emitData => {
-      this.totalCount = emitData.count;
-      this.totalPrice = emitData.price;
+    this.populate();
+
+    this.countService.change.subscribe(() => {
+        this.populate();
     });
+  }
+
+  populate() {
+      this.totalCount = this.countService.getCount();
+      this.totalPrice = this.countService.getPrice();
   }
 }
