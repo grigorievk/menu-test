@@ -59,7 +59,6 @@ export class PDashboardComponent implements OnInit {
         this.menuTitle = this.menuArray.filter((obj) => {
             return obj.id === this.categoryId;
         })[0].name;
-        console.log('route', params);
 
         this.getItems()
             .then((items) => {
