@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { CountService } from '../../count.service';
-import construct = Reflect.construct;
-import {logging} from 'selenium-webdriver';
+/*import construct = Reflect.construct;
+import {logging} from 'selenium-webdriver';*/
 
 @Component({
   selector: 'app-b-list-items',
@@ -14,9 +14,8 @@ export class BListItemsComponent implements OnInit {
   constructor(private countService: CountService) {}
 
   toggleItem(item) {
+    console.log(item);
     item = Object.assign({}, item);
-
-    item.checked = !item.checked;
 
     if (item.checked) {
       this.countService.addItem(item);
