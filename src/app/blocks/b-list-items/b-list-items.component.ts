@@ -14,7 +14,6 @@ export class BListItemsComponent implements OnInit {
   constructor(private countService: CountService) {}
 
   toggleItem(item) {
-    console.log(item);
     item = Object.assign({}, item);
 
     if (item.checked) {
