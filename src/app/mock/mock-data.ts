@@ -9,7 +9,7 @@ export const MOCKMENU = [
     }
 ];
 
-export const MOCKITEMS: object = {
+export const MOCKITEMS:object = {
     1: {
         items: [
             {id: 1, name: 'Item 1', price: 50},

@@ -1,12 +1,13 @@
 import { EventEmitter, Output } from '@angular/core';
 import { Injectable } from '@angular/core';
+import { Item } from './models/item';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CountService {
   @Output() change: EventEmitter<any> = new EventEmitter();
-  selectedItems: {id: number, name: string, category: number, price: number, checked: boolean}[] = [];
+  selectedItems: Item[] = [];
 
   addItem(item) {
     this.selectedItems.push(item);
