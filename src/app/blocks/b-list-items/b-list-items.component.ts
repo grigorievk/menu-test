@@ -9,7 +9,6 @@ import construct = Reflect.construct;
 })
 export class BListItemsComponent implements OnInit {
   @Input() listItems;
-  @Input() categoryId;
 
   constructor(private countService: CountService) {}
 

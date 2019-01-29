@@ -1,8 +1,8 @@
 <ul class="list-items">
   <li class="list-item" *ngFor="let item of listItems">
     <span>
-      <input type="checkbox" name="checkbox_{{ item.id }}" id="checkbox_{{ categoryId }}_{{ item.id }}">
-      <label (click)="toggleItem(item)" for="checkbox_{{ categoryId }}_{{ item.id }}">{{ item.name }}</label>
+      <input type="checkbox" name="checkbox_{{ item.id }}" id="checkbox_{{ item.id }}">
+      <label (click)="toggleItem(item)" for="checkbox_{{ item.id }}">{{ item.name }}</label>
     </span>
     <span>{{ item.price }}$</span>
   </li>
