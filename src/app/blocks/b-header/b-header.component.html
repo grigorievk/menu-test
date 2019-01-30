@@ -1,7 +1,7 @@
 <header>
   <h2 title="Current menu">{{ menuTitle }}</h2>
   <div class="b-info-text">
-    <span>Total selected: {{ totalCount }}</span>
-    <span>Total price: {{ totalPrice }}$</span>
+    <span>Total selected: {{ totalCount$ | async }}</span>
+    <span>Total price: {{ totalPrice$ | async }}$</span>
   </div>
 </header>

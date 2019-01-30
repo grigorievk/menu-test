@@ -1,7 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { CountService } from '../../count.service';
+
+import { Observable } from 'rxjs/Observable';
+import { Store } from '@ngrx/store';
+import * as fromRoot from '../../store/reducers';
+
 import { MOCKMENU, MOCKITEMS } from '../../mock/mock-data';
+import { Item } from '../../models/item';
 
 @Component({
   selector: 'app-p-dashboard',
@@ -9,6 +14,9 @@ import { MOCKMENU, MOCKITEMS } from '../../mock/mock-data';
   styleUrls: ['./p-dashboard.component.sass']
 })
 export class PDashboardComponent implements OnInit {
+    selectedItems$: Observable<Item[]>;
+    selectedIds;
+
     mockMenu = MOCKMENU;
     mockItems = MOCKITEMS;
 
@@ -19,11 +27,20 @@ export class PDashboardComponent implements OnInit {
     constructor(
         private router: Router,
         private route: ActivatedRoute,
-        private countService: CountService
-    ) {}
+        private store: Store<fromRoot.State>
+    ) {
+        this.selectedItems$ = store.select(fromRoot.getSelected);
+
+        this.selectedIds = [];
+        // Subscribe on State
+        this.selectedItems$.subscribe((items) => {
+            this.selectedIds = items.map(item => item.id);
+        });
+    }
 
     ngOnInit() {
         this.route.paramMap.subscribe(params => {
+            // Get current category from Route
             this.categoryId = parseInt(params.get('id')) || 1;
             this.menuTitle = this.mockMenu.filter((obj) => {
                 return obj.id === this.categoryId;
@@ -31,6 +48,7 @@ export class PDashboardComponent implements OnInit {
 
             this.getItems()
                 .then((items) => {
+                    // Get items from MOCK
                     this.listItems = this.prepare(items);
                 })
                 .catch(() => {
@@ -42,7 +60,9 @@ export class PDashboardComponent implements OnInit {
     getItems() {
       return new Promise((resolve, reject) => {
           if (this.mockItems[this.categoryId]) {
-              resolve(this.mockItems[this.categoryId].items);
+              // Clone items objects for immutable
+              const items = this.mockItems[this.categoryId].items.slice().map(item => Object.assign({}, item));
+              resolve(items);
               return;
           }
 
@@ -52,7 +72,8 @@ export class PDashboardComponent implements OnInit {
 
     prepare(items) {
         return items.map((item) => {
-            item.checked = this.countService.selectedItems.find(item2 => item2.id === item.id);
+            // Set checked from State
+            item.checked = this.selectedIds.indexOf(item.id) !== -1;
 
             return item;
         });

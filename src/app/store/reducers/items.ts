@@ -1,6 +1,8 @@
-import { Action } from '@ngrx/store';
+import {Action, createSelector} from '@ngrx/store';
 import * as itemAction from '../actions/items';
+
 import { Item } from '../../models/item';
+import {getItemState} from './index';
 
 export interface State {
     items: Item[];
@@ -14,16 +16,19 @@ export function reducer(state = initialState, action: itemAction.Action) {
     switch (action.type) {
         case itemAction.ADD_ITEM: {
             const newItem: Item = action.payload;
+
             return {
                 ...state,
-                items: { ...state.items, newItem }
+                items: [ ...state.items, newItem ]
             };
         }
         case itemAction.REMOVE_ITEM: {
             const remItem = action.payload;
+
+            console.log(state);
             return {
                 ...state,
-                items: { ...state.items.filter(filterItem => filterItem.id !== remItem.id)}
+                items: state.items.filter(filterItem => filterItem.id !== remItem.id)
             };
         }
         default:

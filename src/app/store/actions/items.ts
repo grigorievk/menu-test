@@ -1,8 +1,8 @@
 import { Action } from '@ngrx/store';
 import { Item } from '../../models/item';
 
-export const ADD_ITEM = '[Item] Add One';
-export const REMOVE_ITEM = '[Items] Select';
+export const ADD_ITEM = '[Item] Add Item';
+export const REMOVE_ITEM = '[Item] Remove Item';
 
 export class AddItem implements Action {
     readonly type = ADD_ITEM;

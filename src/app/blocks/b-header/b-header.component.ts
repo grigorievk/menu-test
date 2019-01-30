@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { CountService } from '../../count.service';
+import { Observable } from 'rxjs/Observable';
+import { Store } from '@ngrx/store';
+import * as fromRoot from '../../store/reducers';
 
 @Component({
   selector: 'app-b-header',
@@ -8,21 +10,15 @@ import { CountService } from '../../count.service';
 })
 export class BHeaderComponent implements OnInit {
   @Input() menuTitle;
-  totalCount: number = 0;
-  totalPrice: number = 0;
+  totalCount$: Observable<any>;
+  totalPrice$: Observable<any>;
 
-  constructor(private countService: CountService) {}
-
-  ngOnInit() {
-    this.populate();
-
-    this.countService.change.subscribe(() => {
-        this.populate();
-    });
+  constructor(private store: Store<fromRoot.State>) {
+    // Get variable by State Selector
+    this.totalCount$ = store.select(fromRoot.getTotalCount);
+    this.totalPrice$ = store.select(fromRoot.getTotalPrice);
   }
 
-  populate() {
-      this.totalCount = this.countService.getCount();
-      this.totalPrice = this.countService.getPrice();
+  ngOnInit() {
   }
 }

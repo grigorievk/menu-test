@@ -21,7 +21,10 @@ export const metaReducers: MetaReducer<State>[] = [logger];
 
 export const getItemState = createFeatureSelector<fromItems.State>('items');
 
-export const getSelected = createSelector(getItemState, fromItems.getSelected);
+export const getSelected = createSelector(
+    getItemState,
+    fromItems.getSelected
+);
 
 export const getTotalCount = createSelector(
     getSelected,
