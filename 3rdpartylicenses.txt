@@ -266,6 +266,9 @@ Apache-2.0
 @angular/core
 MIT
 
+@ngrx/store
+MIT
+
 @angular/common
 MIT
 
