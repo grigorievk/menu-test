@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-
 @Component({
   selector: 'app-b-aside-menu',
   templateUrl: './b-aside-menu.component.html',

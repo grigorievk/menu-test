@@ -1,5 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { FormsModule } from '@angular/forms';
+import { StoreModule } from '@ngrx/store';
+import { reducers, metaReducers } from '../../store/reducers';
 import { BListItemsComponent } from './b-list-items.component';
 
 describe('BListItemsComponent', () => {
@@ -8,6 +11,7 @@ describe('BListItemsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [ FormsModule, StoreModule.forRoot(reducers, { metaReducers }) ],
       declarations: [ BListItemsComponent ]
     })
     .compileComponents();

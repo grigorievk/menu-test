@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { StoreModule } from '@ngrx/store';
+import { reducers, metaReducers } from '../../store/reducers';
 import { BHeaderComponent } from './b-header.component';
+//import {AppComponent} from '../../app.component';
 
 describe('BHeaderComponent', () => {
   let component: BHeaderComponent;
@@ -8,6 +11,7 @@ describe('BHeaderComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [  StoreModule.forRoot(reducers, { metaReducers }) ],
       declarations: [ BHeaderComponent ]
     })
     .compileComponents();
