@@ -43,6 +43,7 @@ export class PDashboardComponent implements OnInit {
         this.route.paramMap.subscribe(params => {
             // Get current category from Route
             this.categoryId = parseInt(params.get('id')) || 1;
+            this.listItems = [];
             this.menuTitle = this.mockMenu.filter((obj) => {
                 return obj.id === this.categoryId;
             })[0].name;
@@ -62,12 +63,13 @@ export class PDashboardComponent implements OnInit {
     getItems() {
       return new Promise((resolve, reject) => {
           if (this.mockItems[this.categoryId]) {
+              const delay = this.isLoaded[this.categoryId] ? 0 : 3000;
               setTimeout(() => {
                   // Clone items objects for immutable
                   const items = this.mockItems[this.categoryId].items.slice().map(item => Object.assign({}, item));
                   resolve(items);
                   this.isLoaded[this.categoryId] = true;
-              }, 3000);
+              }, delay);
 
               return;
           }
