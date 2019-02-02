@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { Observable } from 'rxjs/Observable';
@@ -20,6 +20,7 @@ export class PDashboardComponent implements OnInit {
     mockMenu = MOCKMENU;
     mockItems = MOCKITEMS;
 
+    isLoaded = {};
     menuTitle: string;
     listItems: object;
     categoryId: number;
@@ -45,6 +46,7 @@ export class PDashboardComponent implements OnInit {
             this.menuTitle = this.mockMenu.filter((obj) => {
                 return obj.id === this.categoryId;
             })[0].name;
+            this.isLoaded[this.categoryId] = this.isLoaded[this.categoryId] || false;
 
             this.getItems()
                 .then((items) => {
@@ -60,9 +62,13 @@ export class PDashboardComponent implements OnInit {
     getItems() {
       return new Promise((resolve, reject) => {
           if (this.mockItems[this.categoryId]) {
-              // Clone items objects for immutable
-              const items = this.mockItems[this.categoryId].items.slice().map(item => Object.assign({}, item));
-              resolve(items);
+              setTimeout(() => {
+                  // Clone items objects for immutable
+                  const items = this.mockItems[this.categoryId].items.slice().map(item => Object.assign({}, item));
+                  resolve(items);
+                  this.isLoaded[this.categoryId] = true;
+              }, 3000);
+
               return;
           }
 

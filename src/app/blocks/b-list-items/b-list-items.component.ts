@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Store } from '@ngrx/store';
 import * as fromRoot from '../../store/reducers';
-import * as itemAction from '../../store/actions/items';
+import * as itemAction from '../../store/actions';
 
 import construct = Reflect.construct;
 import {logging} from 'selenium-webdriver';

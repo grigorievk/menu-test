@@ -1,3 +1,4 @@
+import { localStorageSync } from 'ngrx-store-localstorage';
 import { ActionReducerMap, createSelector, createFeatureSelector, ActionReducer, MetaReducer } from '@ngrx/store';
 import * as fromItems from './items';
 
@@ -16,8 +17,12 @@ export function logger(reducer: ActionReducer<State>): ActionReducer<State> {
         return reducer(state, action);
     };
 }
+export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionReducer<any> {
+    return localStorageSync({keys: ['items'], rehydrate: true})(reducer);
+}
 
-export const metaReducers: MetaReducer<State>[] = [logger];
+//export const metaReducers: MetaReducer<State>[] = [logger];
+export const metaReducers: MetaReducer<State>[] = [localStorageSyncReducer];
 
 export const getItemState = createFeatureSelector<fromItems.State>('items');
 

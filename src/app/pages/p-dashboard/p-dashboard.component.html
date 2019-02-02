@@ -10,3 +10,7 @@
 <footer>
   <a routerLink="/">Back to home</a>
 </footer>
+
+<div class="loader" [hidden]="isLoaded[categoryId]">
+  <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+</div>

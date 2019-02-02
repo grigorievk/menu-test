@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { Item } from '../../models/item';
+import { Item } from '../models/item';
 
 export const ADD_ITEM = '[Item] Add Item';
 export const REMOVE_ITEM = '[Item] Remove Item';

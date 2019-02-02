@@ -6,6 +6,10 @@ export const MOCKMENU = [
     {
         id: 2,
         name : 'Menu 2'
+    },
+    {
+        id: 3,
+        name : 'Menu 3'
     }
 ];
 
@@ -30,6 +34,16 @@ export const MOCKITEMS:object = {
             {id: 12, name: 'Item 5', price: 18},
             {id: 13, name: 'Item 6', price: 27},
             {id: 14, name: 'Item 7', price: 33},
+        ]
+    },
+    3: {
+        items: [
+            {id: 15, name: 'Item 1', price: 1},
+            {id: 16, name: 'Item 2', price: 5},
+            {id: 17, name: 'Item 3', price: 9},
+            {id: 18, name: 'Item 4', price: 2},
+            {id: 19, name: 'Item 5', price: 8},
+            {id: 20, name: 'Item 6', price: 7}
         ]
     }
 };

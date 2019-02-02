@@ -1,5 +1,5 @@
-import {Action, createSelector} from '@ngrx/store';
-import * as itemAction from '../actions/items';
+// import {Action, createSelector} from '@ngrx/store';
+import * as itemAction from '../actions';
 
 import { Item } from '../../models/item';
 
